@@ -4,7 +4,7 @@
 	<meta name= "viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0;">
   <meta charset =UTF-8>
 <head>
-  <title>About Chaita</title>
+  <title>Auto adjustable image slider using javascript.</title>
   <style>
 	body{
 		padding:0;
@@ -44,14 +44,15 @@
       img.src = "image/s"+i+".jpg";
       img.style.width = (windo_width)+"px";
       img.style.float = "left";
-      slider.appendChild(img);
-      console.log(img.height,sli_height);
+      //console.log(img.height,sli_height);
       if(img.height < sli_height){
         img.style.height = sli_height+"px";
       }
       else{
         img.style.height = "auto";
       }
+      slider.appendChild(img);
+    
       }
       document.getElementById("body").appendChild(slider_contener);
       slider_contener.appendChild(slider);
