@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="content-type" content= "text/html">
+	<meta name= "viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0;">
+  <meta charset =UTF-8>
+<head>
+  <title>About Chaita</title>
+  <style>
+	body{
+		padding:0;
+		margin:0;
+	}
+
+  </style>
+</head>
+
+<body bgcolor="black" id="body">
+	
+  <script>
+
+		function create_img(){
+      let i;
+      let n = 7;
+      var windo_width = ((window.innerWidth > 0) ? window.innerWidth : screen.width)/2;
+      let slider_contener = document.createElement("div");
+      slider_contener.style.width = windo_width+"px";
+      let sli_height = (windo_width*9)/16;
+      slider_contener.style.height = sli_height+"px";
+      slider_contener.style.background = "yellow";
+      slider_contener.style.overflow = "hidden";
+
+      let slider = document.createElement("div");
+      slider.style.width = windo_width*n + "px";
+      slider.style.height = "auto";
+      slider.style.background = "red";
+      slider.style.float = "left";
+      slider.id = "slider";
+      slider.style.animationName = "imgSlide";
+      slider.style.animationDuration = n*2+"s";
+      slider.style.animationIterationCount = "infinite";
+      slider.style.animationTimingFunction = "ease-in-out";
+      for(i=1;i<=n;i++){
+      let img = document.createElement("img");
+      img.src = "image/s"+i+".jpg";
+      img.style.width = (windo_width)+"px";
+      img.style.float = "left";
+      slider.appendChild(img);
+      console.log(img.height,sli_height);
+      if(img.height < sli_height){
+        img.style.height = sli_height+"px";
+      }
+      else{
+        img.style.height = "auto";
+      }
+      }
+      document.getElementById("body").appendChild(slider_contener);
+      slider_contener.appendChild(slider);
+      
+const keyFrames = document.createElement("style");
+  let keyframesCss = "@keyframes imgSlide {";
+  let percent = (100 / n) ;
+
+  for (let i = 0; i < n; i++) {
+    keyframesCss += `${percent*i}% { margin-left: -${i * windo_width}px; }`;
+  }
+
+  keyframesCss += "}";
+  keyFrames.innerHTML = keyframesCss;
+  document.head.appendChild(keyFrames);
+    }
+    create_img();
+	
+	
+  </script>
+</body>
+
+</html>
